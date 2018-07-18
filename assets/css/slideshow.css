@@ -1,0 +1,170 @@
+
+.mainSection {
+  padding: 0;
+}
+
+#slideWrapper {
+  min-height: 100vh;
+}
+
+#window {
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#rail {
+  position: relative;
+  font-size: 0;
+}
+
+.slide {
+  height: 600px;
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+}
+
+@media (max-width: 670px) {
+  height: 568px;
+}
+
+/* @media screen and (max-width: 992px) {
+  #window,
+  .slide {
+    width: calc(940px * (6 / 12));
+    height: calc(600px * (6 / 12));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #window,
+  .slide {
+    width: calc(940px * (6 / 12));
+    height: calc(600px * (6 / 12));
+  }
+}
+
+@media screen and (max-width: 576px) {
+  #window,
+  .slide {
+    width: calc(940px * (4 / 12));
+    height: calc(600px * (4 / 12));
+  }
+} */
+
+.slide .inner {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  padding: 40px;
+  overflow: auto;
+}
+
+.slide[position="1"]  {
+  background-color: transparent;
+}
+
+.slide[position="2"] {
+  /* background-image: url('https://lemag.nikonclub.fr/wp-content/uploads/2016/11/Photo-selection-pour-Nikon-France-Mattia-Bonavida-2016-8.jpg'); */
+  /* background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+
+}
+
+.slide[position="3"] {
+  background-color: transparent;
+}
+
+.slide[position="4"] {
+  background-color: transparent;
+}
+
+.slide[position="5"]  {
+  background-color: transparent;
+}
+
+.slide[position="6"] {
+  background-color: transparent;
+}
+
+.slide[position="7"] {
+  background-color: #fb9692;
+}
+
+.slide[position="8"] {
+  background-color: #fab297;
+}
+
+.currentSlide {
+}
+
+#btnWrapper {
+  height: 70px;
+  display: flex;
+  text-align: center;
+}
+
+#btnWrapper .inner {
+  margin: auto;
+}
+
+#btnWrapper button {
+  color: #009a7f;
+  font-size: 35px;
+  background: none;
+}
+
+#btnWrapper button {
+  color: #009a7f;
+  font-size: 35px;
+  margin-top: 10px;
+}
+
+#btnWrapper button:focus {
+  box-shadow: none !important;
+}
+/* Customizations */
+
+/* progressBar */
+#progressBarWrapper .progress {
+  border-radius: 0;
+  height: 5px;
+}
+
+#progressBarWrapper {
+  display: none;
+  margin-top: 20px;
+}
+
+#slideWrapper[progressBar='on'] #progressBarWrapper {
+  display: block !important;
+}
+/* end progressBar */
+
+
+/* CenterMode */
+#slideWrapper[centerMode='on'] #window {
+  overflow-x: visible !important;
+  box-shadow: none;
+}
+
+
+#slideWrapper[centerMode='on'] .slide {
+  transition: 0.5s;
+}
+
+#slideWrapper[centerMode='on'] .currentSlide {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: 0.90s;
+}
+
+#slideWrapper[centerMode='on'] .slide:not(.currentSlide) {
+  opacity: 0.3;
+  transition: 0.5s;
+}
+/* End centerMode */

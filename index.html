@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Slideshow</title>
+  <meta name="description" content="Projet semestriel de création de slideshow à PPA."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <section id="loader" style="position: fixed; display: flex; width:100%; height: 100vh; background: #000000; transition: 0.5s; z-index: 100;">
+    <img src="assets/img/loader/mavel-loader.gif" width="100%" alt="loader marvel" style="margin:auto;">
+  </section>
+  
+  <!--- stylesheets are loaded after the loader in order 
+                        to display first a loader image for the user -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/slideshow.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <!-- end stylesheets -->
+  
+  <section id="firstSection" class="container-fluid">
+    <h1 class="text-center">Choisissez votre personnage</h1>
+    <div class="row">
+      <div class="persoChoiceWrapper col-lg-3 col-md-6" id="thor">
+        <img src="assets/img/thor.png" class="img-fluid" alt="thor">
+        <div class="persoTitleWrapper">
+          <h2 class="text-center">Thor</h2>
+        </div>
+      </div>
+
+      <div class="persoChoiceWrapper col-lg-3 col-md-6" id="ironMan">
+        <img src="assets/img/irom-man.png" class="img-fluid" alt="Iron Man">
+        <div class="persoTitleWrapper">
+          <h2 class="text-center">Iron Man</h2>
+        </div>
+      </div>
+
+      <div class="persoChoiceWrapper col-lg-3 col-md-6" id="spiderman">
+        <img src="assets/img/spiderman.png" class="img-fluid" alt="Spiderman">
+        <div class="persoTitleWrapper">
+          <h2 class="text-center">Spiderman</h2>
+        </div>
+      </div>
+
+      <div class="persoChoiceWrapper col-lg-3 col-md-6" id="captainAmerica">
+        <img src="assets/img/captain-america.png" class="img-fluid" alt="Captain America">
+        <div class="persoTitleWrapper">
+          <h2 class="text-center">Captain America</h2>
+        </div>
+      </div>
+
+      <div class="col-md-6 offset-md-3" id="valideChoiceAlertWrapper" >
+        <div class="text-center" id="valideChoiceAlert" style="display: none;">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button id="validate" type="button" class="btn btn-secondary">Valider <i class="far fa-check-circle"></i></button>
+            <button type="button" class="btn btn-secondary" onClick="invalidateAllChoices();">
+              Annuler <i class="fas fa-ban"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- firstSection -->
+
+
+
+  <section id="secondSection" style="display:none; max-height: 100vh;">
+    <div id="slideWrapper" class="slideShow mainSection container"
+      centerMode="off" progressBar="on" swipeActive="on">
+      <div id="window" class="">
+        <div id="rail">
+
+          <!-- slide 1 -->
+          <div class="slide" navigation="on">
+            <div class="inner container">
+              <div class="row">
+                <div class="col-sm-4" style="">
+                  <div class="persoWrapper"></div>
+                </div>
+                <div class="col-sm-8" style="">
+                  <div id="charactertics" style="display:none;">
+                    <div class="row">
+                      <h2 class="d-none d-md-block mb-md-3 mt-3 col-12 caracteristics">Caractéristiques</h2>
+                      <div class="col-12">
+                        <h3 class="caracTitle">Force</h3>
+                        <div class="progress">
+                          <div class="progress-bar bg-success strengthProgress" role="progressbar" style="width:0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <h3 class="caracTitle">Vitesse</h3>
+                        <div class="progress">
+                          <div class="progress-bar bg-info speedProgress" role="progressbar" style="width:0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <h3 class="caracTitle">Intelligence</h3>
+                        <div class="progress">
+                          <div class="progress-bar bg-warning smartnessProgress" role="progressbar" style="width:0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <h3 class="caracTitle">Santé</h3>
+                        <div class="progress">
+                          <div class="progress-bar bg-danger healthProgress" role="progressbar" style="width:0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                    </div><!--end wrapper -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end slide 1 -->
+          
+          <!-- slide 2 -->
+          <div class="slide" navigation="on">
+            <div class="inner d-flex">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h2 class="m-auto mb-4">Son histoire</h2>
+                    <p id="charactStory" class="mt-4" style="display:none;"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- slide 2 -->
+          
+          <!-- slide 3 -->
+          <div class="slide" navigation="on">
+            <div class="inner d-flex">
+              <div class="container">
+                <div class="row">
+                  <h2 class="col-12 text-center">Son passif avec Thanos</h2> 
+                  <h4 class="col-12 text-center">Vous vous demandiez s'il avait été tué par Thanos dans Infity War ?</h4>
+                  <div class="col-md-8 offset-md-2 text-center">
+                    <img id="killedByThanosWaiter" alt="Wait for the answer"
+                        src="assets/img/interrogation-mark.png" class="img-fluid">
+                    <img id="killedByThanosImg" alt="Death by Thanos" class="img-fluid" style="display:none;"> 
+                    <p id="killedByThanosParag" style="display:none;"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end slide 3 -->
+
+          <!-- slide 4 -->
+          <div class="slide" navigation="on">
+            <div class="inner d-flex">
+              <div class="container">
+                <div class="row" id="comicFirstSlideWrapper"></div>
+              </div>
+            </div>
+          </div>
+          <!-- end slide 4 -->
+          
+          <!-- slide 5 -->
+          <div class="slide" navigation="on">
+            <div class="inner d-flex">
+              <div id="badMenWrapper" class="row"></div>
+            </div>
+          </div>
+          <!-- slide 5 -->
+
+          <!-- slide 6 -->
+          <div class="slide " navigation="on">
+            <div class="inner d-flex">
+              <div id="powerTool" class="row">
+                <div class="col-md-8 col-lg-6 offset-md-2 offset-lg-3">
+                  <img src="" id='powerImg' class="img-fluid" style="display:none;"/>
+                </div>
+                <h2 class="col-12 mt-2 text-center" id="powerTitle" style="visibility:0;"></h2>
+                <p class="col-12 text-light text-center" id="powerDescription" style="display:none;"></p>
+              </div>
+            </div>
+          </div>
+          <!-- slide 6 -->
+
+          <!-- slide 7 -->
+          <div class="slide" navigation="on">
+            <div class="inner d-flex p-0">
+              <iframe id="videoFrame" width="100%" height="auto" frameborder="0" 
+                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+          </div>
+          <!-- end slide 7 -->
+
+          <!-- <div class="slide" navigation="on">
+            <div class="inner d-flex">
+              <h2 class="m-auto">8</h2>
+            </div>
+          </div> -->
+
+        </div><!-- end rail -->
+      </div><!-- end window -->
+
+      <div id="progressBarWrapper">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+
+      <div id="btnWrapper">
+        <div class='inner'>
+          <button type="button" id="btnPrevious" class="btn btn-lg" onClick="displayPreviousSlide('slideWrapper');"
+              data-toggle="tooltip" data-placement="top" title="Slide précédente" data-trigger="hover">
+            <i class="fas fa-arrow-alt-circle-left"></i>
+          </button>
+          <button type="button" id="launchAutoPlay" class="btn btn-lg" onClick="LaunchAutoPlay('slideWrapper')" value="off"
+            data-toggle="tooltip" data-placement="top" title="Lecture automatique" data-trigger="hover">
+            <i class="fas fa-play-circle"></i>
+          </button>
+          <button type="button" id="btnNext" class="btn btn-lg" onClick="displayNextSlide('slideWrapper');"
+            data-toggle="tooltip" data-placement="top" title="Slide suivante" data-trigger="hover">
+            <i class="fas fa-arrow-alt-circle-right"></i>
+          </button>
+          <button type="button" id="btnNext" class="btn btn-lg" onClick="resetGame();" 
+              data-toggle="tooltip" data-placement="right" title="Choisir un autre personnage" data-trigger="hover">
+            <i class="fas fa-sync-alt"></i>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- en mainSection -->
+  </section>
+
+  <!-- Scripts JS -->
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="assets/js/jquery-ui.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/change-slide.js"></script>
+  <script src="assets/js/navigation-controller.js"></script>
+  <script src="assets/js/progress-bar.js"></script>
+  <script src="assets/js/swipe-handler.js"></script>
+  <script src="assets/js/responsiveness.js"></script>
+  <script src="assets/js/initialize-slider.js"></script>
+  <script src ="assets/js/character-attributes.js"></script>
+  <script src="assets/js/game.js"></script>
+  <script src="assets/js/image-preloader.js"></script>
+</body>
+</html>
