@@ -121,13 +121,12 @@ var char = {
         {
           name: "Le Bouffon Vert",
           imgUrl: 'assets/img/comics/lebouffonvert.png',
-          story: "Norman Osborn alias le premier bouffon vert étudia la chimie et l'ingénierie électrique à l'université, ainsi que la gestion d'entreprise. Il découvrit une formule chimique octroyant une grande force physique. Mais un accident provoqué par son fils fit exploser la substance, et Norman aspira les vapeurs."
-
+          story: "Norman Osborn alias le premier bouffon vert étudia la chimie et l'ingénierie électrique à l'université, ainsi que la gestion d'entreprise. Il découvrit une formule chimique octroyant une grande force physique."
         },
         {
           name: "Docteur Octopus",
           imgUrl: 'assets/img/comics/DocteurOctopus.png',
-          story: "Le docteur Otto Octavius était un scientifique brillant jusqu'à ce qu'un accident de laboratoire fusionne un ensemble de bras mécaniques sur son corps. En tant que Docteur Octopus, aussi appelé Doc Ock, il utilise ses bras et son génie fou pour commettre des crimes et essayer d'apprendre le secret des pouvoirs araignées de Spider-Man."
+          story: "Le docteur Otto Octavius était un scientifique brillant jusqu'à ce qu'un accident de laboratoire fusionne un ensemble de bras mécaniques sur son corps. Il utilise ses bras et son génie fou pour commettre des crimes"
         },
         {
           name: "Venum",
@@ -140,7 +139,7 @@ var char = {
       title: 'L\'araignée radioactive',
       description: "Durant l'une des expériences de l'exposition, une araignée solitaire s'aventura au travers d'un rayon d'énergie radioactive émis par l'accélérateur de particules utilisé pour l'expérience. Devenue à son tour radioactive, cette araignée se retrouva sur la main de Peter, qu'elle piqua immédiatement. Peter réalisa immédiatement que l'araignée avait été irradiée et s'éclipsa rapidement quand il commença à se sentir nauséeux après la morsure"
     },
-    videoUrl: '"https://www.youtube.com/embed/EcDVXeB_rY4?rel=0&amp;showinfo=0" '
+    videoUrl: 'https://www.youtube.com/embed/EcDVXeB_rY4?rel=0&amp;showinfo=0'
   
   },
   captainAmerica : {
@@ -170,21 +169,18 @@ var char = {
         {
           name: "Crâne Rouge",
           imgUrl: 'assets/img/comics/cranerouge.png',
-          story: "Il s'agit de l'ennemi juré de Captain America, aussi bien durant la Seconde Guerre mondiale qu'à l'époque contemporaine.Il devint le bras droit d'Hitler sous le nom de Crâne rouge, et se débarrassa petit à petit des autres fidèles du Führer. Lors de la Seconde Guerre mondiale, il fut enseveli dans une explosion sous les décombres d'un château, lors d'une confrontation avec Captain America. Un gaz expérimental le maintint en vie."
-
+          story: "Il s'agit de l'ennemi juré de Captain America, aussi bien durant la Seconde Guerre mondiale qu'à l'époque contemporaine.Il devint le bras droit d'Hitler sous le nom de Crâne rouge."
 
         },
         {
           name: "Winter Soldier",
           imgUrl: 'assets/img/comics/wintersoldier.png',
-          story: "James Barnes était un soldat de l'armée de terre des États-Unis et devint l'ami de Steve Rogers, secrètement devenu Captain America. Suite à l'echec d'une mission, il est secouru par un sous-marin de la marine soviétique. Gravement blessé et partiellement amnésique, il est soigné par les autorités soviétiques, qui le placent en cryostase jusqu'en 1954 et lui greffent un bras cybernétique. Commence alors l'opération « Soldat de l'hiver » : il devient un assassin du KGB, réveillé de son hibernation à intervalles réguliers pour accomplir ses missions"
+          story: "Gravement blessé et partiellement amnésique suite à une mission avec Captain America, il est soigné par les autorités soviétiques, qui le placent en cryostase jusqu'en 1954 et lui greffent un bras cybernétique."
         },
-        
         {
           name: "Taskmaster",
           imgUrl: 'assets/img/comics/Taskmaster.png',
-          story: "Il est le fils de crâne rouge. Taskmaster n'a pas de pouvoirs surhumains, mais il possède un don exceptionnel : des réflexes photographiques. Il peut ainsi reproduire les mouvements physiques de tous ceux qu'il observe. C'est un athlète hors pair, limité seulement par sa force physique normale. Avec tout ce qu'il a regardé (même sur vidéo), il est devenu excellent dans de nombreuses techniques de combat (boxe, lutte, escrime, arts martiaux divers, tir d'élite, acrobaties et prestidigitation…)" 
-          
+          story: "Il est le fils de crâne rouge. Taskmaster n'a pas de pouvoirs surhumains, mais il possède un don exceptionnel : des réflexes photographiques."
         },
     ],
     powerTool: {

@@ -34,6 +34,7 @@ function resetGame () {
   $('body').css('background',  'url("assets/img/doomsday-bg-3.jpg")');
   $('html, body').animate( { scrollTop: 0 }, 1250 ); // Go
   $('#secondSection').hide();
+  resetAllSlide();
 };
 
 function invalidateAllChoices () {
@@ -48,7 +49,7 @@ function invalidateAllChoices () {
 $('#valideChoiceAlert #validate').on('click', goToSlideShow);
 
 function goToSlideShow () {
-  firstSlide();
+  resetFirstSlide();
   $('body').css('background',  `url('${characterAttributes.backgroundUrl}')`);
   var page = '#secondSection'; // Page cible
   var speed = 750; // Durée de l'animation (en ms)
@@ -59,9 +60,27 @@ function goToSlideShow () {
     $('#firstSection').hide();
   }, 1000);
   $('html, body').addClass('noScroll');
+  CallBackHandler();
 }
 
+function resetFirstSlide() {
+  var progressStrength = $('.strengthProgress'),
+      progressSpeed = $('.speedProgress'),
+      progressSmartness = $('.smartnessProgress'),
+      healthProgress = $('.healthProgress');
+      
+    
+  $('#charactertics').hide();    
+  progressStrength.css('width', '00%');
+  progressSpeed.css('width', '00%'); 
+  progressSmartness.css('width', '00%');
+  healthProgress.css('width', '00%');
+  var persoWrappers = $('.persoWrapper');
+  persoWrappers.empty();
+};
+
 function firstSlide () {
+  $('body').css('background',  `url('${characterAttributes.backgroundUrl}')`);
   var persoWrappers = $('.persoWrapper'),
       characterImg  = chosenCharacter.find('img').clone(),
       characterName = chosenCharacter.find('h2').clone();
@@ -89,10 +108,10 @@ function firstSlide () {
         progressSmartness = $('.smartnessProgress'),
         healthProgress = $('.healthProgress');
         
-    progressStrength.css('width', '0%');
-    progressSpeed.css('width', '0%'); 
-    progressSmartness.css('width', '0%');
-    healthProgress.css('width', '0%');
+    progressStrength.css('width', '00%');
+    progressSpeed.css('width', '00%'); 
+    progressSmartness.css('width', '00%');
+    healthProgress.css('width', '00%');
 
     progressStrength.css('width', `${characterCaract.strength}%`);
     progressSpeed.css('width', `${characterCaract.speed}%`);
@@ -100,17 +119,22 @@ function firstSlide () {
     healthProgress.css('width', `${characterCaract.health}%`);
   };
   //
-  removeSeventhSlide();
 };
 
-function displayCharacterStory () {
+function resetSecondSlide () {
+  var storyParagraph = $('#charactStory');
+  storyParagraph.empty();
+  storyParagraph.hide();
+};
+
+function secondSlide () {
+  $('body').css('background',  `url('${characterAttributes.backgroundUrl}')`);
   var storyParagraph = $('#charactStory');
   storyParagraph.text(characterAttributes.story);
   storyParagraph.fadeIn();
-  hideContentFromThirdSlide();
 };
 
-function hideContentFromThirdSlide() {
+function resetThirdSlide() {
   var deathByThanosImg = $('#killedByThanosImg'),
     killedByThanosWaiter = $('#killedByThanosWaiter'),
     killedByThanosParag = $('#killedByThanosParag');
@@ -133,12 +157,14 @@ function thirdSlide () {
       killedByThanosParag.fadeIn();
     });
   });
-  hideContentFromFourthSlide();
+  resetSecondSlide();
 };
 
 function fourthSlide () {
+  $('body').css('background',  '#000000');
   var comicFirstSlideWrapper = $('#comicFirstSlideWrapper'),
       divTags = ['<div class="col-md-4">', '</div>'];
+  comicFirstSlideWrapper.hide();    
   comicFirstSlideWrapper.empty();
   
   characterAttributes.comicsFirstSlideImgs.forEach(function (imgUrl) {
@@ -146,35 +172,44 @@ function fourthSlide () {
         comicDiv = [divTags[0], imgTag, divTags[1] ].join('\n');
     comicFirstSlideWrapper.append(comicDiv);
   });
-  hideContentFromThirdSlide();
+  comicFirstSlideWrapper.fadeIn(500);
 }
 
-function hideContentFromFourthSlide () {
+function resetFourthSlide () {
     var comicFirstSlideWrapper = $('#comicFirstSlideWrapper'),
         divTags = ['<div class="col-md-4">', '</div>'];
     comicFirstSlideWrapper.empty();
 };
 
+
 function fifthSlide () {
+  $('body').css('background',  '#000000');
   var badMen = characterAttributes.badMen;
       badMenWrapper = $('#badMenWrapper'),
       divTags = ['<div class="badMenWrapper col-md-4 col-sm-6 mb-3 mb-md-1">', '</div>'];
+      badMenWrapper.hide();
       badMenWrapper.empty();
   
   badMen.forEach(function(badMan) {
     var badManImgUrl = badMan.imgUrl,
-        badManName = badMan.name,
+        badManName =  badMan.name,
         badManStory = badMan.story,
         badManImgHtml = `<img src="${badManImgUrl}" alt="${badManName}" class="img-fluid">`,
         htmlTitle = `<h3 class="text-center">${badManName}</h3>`,
         htmlContent = [ divTags[0], badManImgHtml, htmlTitle, badManStory, divTags[1] ].join('\n');
         
     badMenWrapper.append(htmlContent);
+    badMenWrapper.fadeIn(400);
   });
-  hideContentFromFourthSlide();
+};
+
+function resetFifthSlide() {
+  var badMenWrapper = $('#badMenWrapper');
+  badMenWrapper.empty();
 };
 
 function sixthSlide () {
+  $('body').css('background',  '#000000');
   var powerImg =         $('#powerTool img#powerImg'),
       powerTitle =       $('#powerTool #powerTitle'),
       powerDescription = $('#powerTool #powerDescription');
@@ -191,15 +226,24 @@ function sixthSlide () {
       powerDescription.fadeIn(700);
     });
   });
-  removeSeventhSlide();
+};
+
+function resetSixthSlide () {
+    var powerImg =         $('#powerTool img#powerImg'),
+      powerTitle =       $('#powerTool #powerTitle'),
+      powerDescription = $('#powerTool #powerDescription');
+    powerTitle.hide();
+    powerImg.removeAttr('src').hide();
+    powerDescription.empty().hide();
 };
 
 function seventhSlide() {
+  $('body').css('background',  '#000000');
   var iframeSrc = $('#videoFrame');
   iframeSrc.attr('src', characterAttributes.videoUrl += '&autoplay=1' );
 };
 
-function removeSeventhSlide() {
+function resetSeventhSlide() {
   var iframeSrc = $('#videoFrame');
   iframeSrc.attr('src', '');
 };
@@ -212,3 +256,13 @@ function getSorted(selector, attrName) {
         return aVal - bVal;
     }));
 }
+
+function resetAllSlide () {
+  resetFirstSlide();
+  resetSecondSlide();
+  resetThirdSlide();
+  resetFourthSlide();
+  resetFifthSlide();
+  resetSixthSlide();
+  resetSeventhSlide();
+};

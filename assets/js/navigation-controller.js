@@ -33,24 +33,38 @@ function CallBackHandler () {
   switch(currentPosition) {
     case 1:
         firstSlide();
+        resetSeventhSlide();
+        resetSecondSlide();
         break;
     case 2:
-        displayCharacterStory()
+        secondSlide();
+        resetFirstSlide();
+        resetThirdSlide();
         break;
     case 3:
         thirdSlide();
+        resetFourthSlide();
+        resetSecondSlide();
         break;
     case 4:
         fourthSlide();
+        resetFifthSlide();
+        resetThirdSlide();
         break;
     case 5:
         fifthSlide();
+        resetFourthSlide();
+        resetSixthSlide();
         break;
     case 6:
         sixthSlide();
+        resetSeventhSlide();
+        resetFifthSlide();
         break;
     case 7:
         seventhSlide();
+        resetFirstSlide();
+        resetSixthSlide();
         break;
     default:
         console.log(currentPosition);

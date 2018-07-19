@@ -1,27 +1,5 @@
-// Preload images to ensure more speed to display (browser caches it)
-var preloadPictures = function(pictureUrls, callback) {
-    var i,
-        j,
-        loaded = 0;
 
-    for (i = 0, j = pictureUrls.length; i < j; i++) {
-        (function (img, src) {
-            img.onload = function () {                               
-                if (++loaded == pictureUrls.length && callback) {
-                    callback();
-                }
-            };
-
-            // Use the following callback methods to debug
-            // in case of an unexpected behavior.
-            img.onerror = function () {};
-            img.onabort = function () {};
-
-            img.src = src;
-        } (new Image(), pictureUrls[i]));
-    }
-};
-
+// Custom fonction to flattened an array (original one is badly supported on browsers)
 Object.defineProperty(Array.prototype, 'flat', {
     value: function(depth = 1) {
       return this.reduce(function (flat, toFlatten) {
@@ -30,13 +8,15 @@ Object.defineProperty(Array.prototype, 'flat', {
     }
 });
 
+// Create an array on every images used in character-attributes.js
 var imageToPreloadArray = []; 
 $.each(char, function(characterAttrs) { 
     var currentCharactAttrs = [];
     currentCharactAttrs.push(
         this.firstImageUrl, 
         this.hasBeenKilledByThanosImage,
-        this.powerTool.imgUrl
+        this.powerTool.imgUrl,
+        this.backgroundUrl
     );
     
     var badMenArray = [];
@@ -47,9 +27,20 @@ $.each(char, function(characterAttrs) {
     currentCharactAttrs.push(this.comicsFirstSlideImgs);
     imageToPreloadArray.push(currentCharactAttrs);
 });
-imageToPreloadArray = imageToPreloadArray.flat(2);
-console.log(imageToPreloadArray);
+imageToPreloadArray = imageToPreloadArray.flat(2); // concat in one array
 
-preloadPictures(imageToPreloadArray, function () {});
+// Preload images to ensure more speed to display (browser caches it)
+function insertPictureInDom () {
+    var imageDomWrapper = document.getElementById('imageDomWrapper');
+    
+    imageToPreloadArray.forEach(function(image_url) {
+       var imageHtmlNode = $(imageDomWrapper).append(`<img src="${image_url}">`);
+    });
+    
+    $(window).on('load', function() {
+        $(imageDomWrapper).remove();
+        $('#loader').fadeOut();
+    });
+};
 
-$('#loader').fadeOut();
+insertPictureInDom();
