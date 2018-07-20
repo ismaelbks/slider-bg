@@ -99,7 +99,13 @@ body {
   /* background: url('../img/arcarde.png'); */
   background-size: contain;
   background-repeat: no-repeat;
-  padding-top: 50px;
+}
+
+
+@media(min-height:768px) {
+  #secondSection {
+    padding-top: 50px;
+  }
 }
 
 #charactertics .progress {
